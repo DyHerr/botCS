@@ -1,5 +1,6 @@
 // Logic for the ChatGPT-powered `/api/chat` endpoint
 export async function POST(req) {
+
   try {
     // Processing the request body
     const { messages } = await req.json();

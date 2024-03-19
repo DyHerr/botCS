@@ -124,15 +124,26 @@ export default function Home() {
   return (
     <main className="mx-auto h-screen max-w-full sm:max-w-3xl">
       <div className="py-8">
-        <h1 className="text-center text-6xl font-bold text-blue-500">
-         Codigo Solution BOT
+        <h1 className="text-center text-6xl font-bold text-[#084af3] pb-[25px]">
+         Codigo AI Chatbot
         </h1>
+          <div class="text-center font-extrabold text-3xl md:text-4xl [text-wrap:balance] bg-clip-text text-transparent bg-gradient-to-r from-[#084af3] to-50% to-blue-400">Trusted by the most innovative minds in <span class="text-[#f45a2a] inline-flex flex-col h-[calc(theme(fontSize.3xl)*theme(lineHeight.tight))] md:h-[calc(theme(fontSize.4xl)*theme(lineHeight.tight))] overflow-hidden">
+            <ul class="block animate-text-slide text-left leading-tight [&_li]:block">
+              <li>Finance</li>
+              <li>Tech</li>
+              <li>AI</li>
+              <li>Crypto</li>
+              <li>eCommerce</li>
+              <li aria-hidden="true">Finance</li>
+            </ul>
+          </span></div>
       </div>
 
       {messages.length === 1 && (
-        <div className="mx-10 mt-20 flex justify-center">
+        <div className="ml-[10px] mt-20 p-5 flex justify-start border-2 border-[#084af3]  rounded-md bg-blue-100
+        animate-fade-up animate-once">
           <div>
-            <p className="mb-2 font-bold">
+            <p className="mb-2 font-bold text-[#084af3]">
             Prova il nostro bot che puo essere tuo dentro la tua azienda a facilitare il lavore per te
             </p>
             <p className="mb-32">
@@ -170,8 +181,9 @@ export default function Home() {
           </div>
         </div>
       )}
-
-      <div>
+      {!loadingStatus && messages.length > 1 && (
+      <div className="bg-gradient-to-b from-blue-400 to-blue-500 p-2 rounded-md border-2 border-blue-600
+      text-white animate-fade-up animate-once">
         {messages.slice(1).map((message, index) => (
           <div className="mx-2 my-4" key={index.toString()}>
             <p className="font-bold">
@@ -183,6 +195,7 @@ export default function Home() {
           </div>
         ))}
       </div>
+      )}
 
       {loadingStatus && (
         <div className="mx-2 mt-4">
@@ -193,9 +206,7 @@ export default function Home() {
       {!loadingStatus && messages.length > 1 && (
         <div className="mt-4 flex justify-center">
           <button
-            className="h-11 rounded-md border-2 border-gray-500
-                         bg-gray-500 px-1 py-1 hover:border-gray-600 
-                         hover:bg-gray-600"
+            className="h-11 rounded-full w-[120px] border-2 px-1 py-1 bg-gradient-to-r from-[#084af3] to-blue-500 hover:from-[#f45a2a] hover:to-yellow-500"
             onClick={onClick}
           >
             <p className="font-bold text-white">Nuova chat</p>
@@ -217,9 +228,9 @@ export default function Home() {
         <form className="mx-2 flex items-end" onSubmit={onSubmit}>
           <textarea
             ref={textareaRef}
-            className="mr-2 grow resize-none rounded-md border-2 
+            className="mr-2 grow resize-none rounded-full border-2 
                        border-gray-400 p-2 focus:border-blue-600 
-                         focus:outline-none"
+                         focus:outline-none h-[44px]"
             value={newMessageText}
             onChange={onChange}
             onKeyDown={onKeyDown}
@@ -236,9 +247,7 @@ export default function Home() {
             </button>
           ) : (
             <button
-              className="h-11 rounded-md border-2 border-blue-600
-                         bg-blue-600 px-1 py-1 hover:border-blue-700 
-                         hover:bg-blue-700"
+              className="h-11 rounded-full border-2 px-1 py-1 w-[80px] bg-gradient-to-r from-[#084af3] to-blue-500 hover:from-[#f45a2a] hover:to-yellow-500"
               type="submit"
             >
               <p className="font-bold text-white">Invia</p>
